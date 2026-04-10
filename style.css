@@ -1,0 +1,547 @@
+@font-face {
+    font-family: 'FreeSerif';
+    src: url('fonts/fonter.am_free-serif/FreeSerif.ttf') format('truetype');
+    /* Если есть файл в формате woff2 (более современный) — используйте его:
+       src: url('../fonts/FreeMonoArmenian.woff2') format('woff2'); */
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Пока шрифт грузится, текст будет виден */
+}
+body {
+    font-family: 'FreeSerif', 'Courier New', monospace;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+}
+
+.countdown-title {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-top: 100px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 20px 0px 0px;
+}
+
+.names {
+  margin-top: 10vh;
+  font-size: 3.5rem;
+  color: white;
+  text-align: center;
+  animation: fadeUp 2s ease-out forwards;
+}
+
+.countdown-wrapper {
+  margin-top: auto;
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeUp 2.5s ease-out forwards;
+}
+
+.countdown {
+  animation: fadeUp 2.5s ease-out forwards;
+  color: #fffbea;
+  padding: 10px 16px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 12px;
+  min-width: 60px;
+}
+
+.time-block .number {
+  font-size: 2.2rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.time-block .label {
+  font-size: 0.8rem;
+  color: #ddd;
+  margin-top: 5px;
+}
+
+.invitation {
+  padding: 30px 20px 60px 20px;
+  text-align: center;
+  background-color: #f8f8f8;
+}
+
+.invitation-text {
+  color: #333;
+}
+
+.invitation-text h2 {
+  font-size: 2.4rem;
+  margin-bottom: 2vh;
+  margin-top: 1vh;
+}
+
+.invitation-text p {
+  font-size: 2.2rem;
+  margin-bottom: 5vh;
+}
+
+#calendar {
+  position: relative;
+  align-content: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-top: 3vh;
+}
+
+.day, .weekday {
+  position: relative;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1.3rem;
+}
+
+.weekday {
+  background: #b4c4a241;
+}
+
+.selected {
+  font-weight: bold;
+}
+
+.selected img {
+  position: absolute;
+  top: 35%;
+  left: 55%;
+  width: 12vw;
+  height: 6vh;
+  transform: translate(-50%, -50%) rotate(25deg);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.selected img.visible {
+  opacity: 1;
+}
+
+.selected span {
+  position: relative;
+  z-index: 2;
+}
+
+/* Registry Office Styles */
+.registry-office {
+  position: relative;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.registry-office-bg {
+  position: relative;
+  flex-grow: 1;
+  background: url('images/s.jpg') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+}
+
+.registry-office-overlay {
+  background: rgba(22, 32, 24, 0.413);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.registry-office-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.registry-office-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.2s ease-out;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.registry-office-text h2 {
+  font-size: 9vw;
+  margin-bottom: 5vh;
+  margin-top: 8vh;
+}
+
+.registry-office-text p {
+  font-size: 5vw;
+  margin-bottom: 4vh;
+}
+
+.dress-code-container {
+  margin: 20px auto;
+}
+
+.dress-code {
+  padding: 20px;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+.dress-code h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.dress-code p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.dress-code-colors {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.color-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 60%;
+  border: 1px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.color-box:hover {
+  transform: scale(1.1);
+}
+
+/* Restaurant Styles */
+.restaurant {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.restaurant-bg {
+  position: relative;
+  flex-grow: 1;
+  background: url('images/r3.jpg') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+}
+
+.restaurant-overlay {
+  background: rgba(0, 0, 0, 0.55);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.restaurant-text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.2s ease-out;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.restaurant-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.restaurant-text h2 {
+  font-size: 9vw;
+  margin-bottom: 5vh;
+  margin-top: 8vh;
+}
+
+.restaurant-text p {
+  font-size: 5vw;
+  margin-bottom: 4vh;
+}
+
+.restaurant-description {
+  display: block;
+}
+
+.map-button {
+  text-align: center;
+  padding: 10px;
+}
+
+.map-button a {
+  display: inline-block;
+  font-size: 5vw;
+  color: #a67856;
+  background: #fff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.map-button a:hover {
+  background: #fff4ec;
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.6rem;
+  color: #888;
+  padding: 0.7vh 0 0.7vh 0;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .invitation-text h2 {
+    font-size: 1.6rem;
+  }
+  .invitation-text p {
+    font-size: 1.4rem;
+  }
+  
+  .countdown {
+    gap: 8px;
+  }
+
+  .time-block {
+    min-width: 50px;
+    padding: 8px;
+  }
+
+  .time-block .number {
+    font-size: 2.2rem;
+  }
+
+  .time-block .label {
+    font-size: 1.5rem;
+  }
+
+  .dress-code-container {
+    padding: 0 15px;
+  }
+  
+  .dress-code {
+    padding: 15px;
+  }
+  
+  .dress-code h3 {
+    font-size: 1.5rem;
+  }
+  
+  .dress-code p {
+    font-size: 1rem;
+  }
+  
+  .color-box {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .selected img {
+    width: 5vw;
+    height: auto;
+    top: 34%;
+    left: 52%;
+  }
+  
+  .restaurant-description {
+    display: none;
+  }
+  
+  .names {
+    font-size: 9rem;
+  }
+
+
+
+  .countdown {
+    font-size: 8rem;
+  }
+
+  .countdown-wrapper{
+    font-size: 8rem;
+  }
+  
+  .time-block .number {
+    font-size: 5rem;
+  }
+
+  .time-block .label {
+    font-size: 4rem;
+  }
+  
+  /* Registry Office Desktop Styles */
+  .registry-office-text h2 {
+    font-size: 4rem;
+  }
+  
+  .registry-office-text p {
+    font-size: 1.5rem;
+  }
+  
+  .dress-code h3 {
+    font-size: 2rem;
+  }
+  
+  .color-box {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .dress-code p {
+    font-size: 1.2rem;
+  }
+  
+  /* Restaurant Desktop Styles */
+  .restaurant-text h2 {
+    font-size: 4rem;
+  }
+  
+  .restaurant-text p {
+    font-size: 1.5rem;
+  }
+  
+  .map-button a {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dress-code {
+    padding: 10px;
+  }
+  
+  .dress-code h3 {
+    font-size: 1.3rem;
+  }
+  
+  .dress-code p {
+    font-size: 0.9rem;
+  }
+  
+  .color-box {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .dress-code-colors {
+    gap: 10px;
+  }
+}
+#music-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
